@@ -3,27 +3,6 @@
         <apex:define name="title">Player Profile</apex:define>
         <apex:define name="header">Player Profile</apex:define>
         <apex:define name="head">
-        <!--style type="text/css" media="screen">
-            /*
-            @media all and (max-width: 3000px) and (min-width: 768px) {
-              #cloud {
-                width: 512px;
-                height: 490px;
-                margin-left: -50px;
-                background: url(../images/email.png) left center no-repeat;
-              }
-            }
-
-            @media all and (max-width: 767px) and (min-width: 200px) {
-              #cloud {
-                width: 256px;
-                height: 245px;
-                margin-left: -25px;
-                background: url(../images/email.png) left center no-repeat;
-              }
-            }
-            */
-            </style-->
         </apex:define>
         <apex:define name="content">
             <div data-role="content" role="main" class="ui-content" style="background-color: #e2f5fc">
@@ -44,17 +23,6 @@
                 </div>
             </div>
             <apex:outputPanel rendered="false">{!Player__c.Game__c}</apex:outputPanel>
-            <script>
-                /*
-                $j(document).bind("orientationchange", function(e){
-                    $j(window).trigger("throttledresize")
-                });
-                
-                if( (screen.width > 320) && (screen.height > 480) ){
-                        
-                }
-                */
-            </script>
         </apex:define>
     </apex:composition>
 </apex:page>

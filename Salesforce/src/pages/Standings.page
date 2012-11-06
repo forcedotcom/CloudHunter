@@ -29,17 +29,6 @@
             </apex:repeat>
         </ul>
     </div>
-    <script>
-        /*
-        $j(document).bind("orientationchange", function(e){
-            $j(window).trigger("throttledresize")
-        });
-        
-        if( (screen.width > 320) && (screen.height > 480) ){
-                
-        }
-        */
-    </script>
 </apex:define>
 </apex:composition>
 </apex:page>

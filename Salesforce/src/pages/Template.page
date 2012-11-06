@@ -3,9 +3,6 @@
     <head>
         <title><apex:insert name="title">Default Title</apex:insert></title>
         <apex:styleSheet value="{!URLFOR($Resource.jQuery, 'jquery/jquery.mobile-1.1.1.min.css')}" />
-        <!--style>
-        // div.ui-loader.ui-overlay-shadow { display: none !important; }
-        </style-->
         <apex:includeScript value="{!URLFOR($Resource.jQuery, 'jquery/jquery-1.6.2.min.js')}"/>
         <apex:includeScript value="{!URLFOR($Resource.jQuery, 'jquery/jquery.mobile-1.1.1.min.js')}"/>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
@@ -19,29 +16,12 @@
             
             $j(window).ready(function() {
                 $j.mobile.hidePageLoadingMsg();
-            /*    
-                if (!navigator.onLine) {
-                     $j.mobile.changePage('#offline', {changeHash: true});
-                     return;
-                }        
-            
-                $j(window).bind('offline',function(e){
-                    $j.mobile.changePage('#offline', {changeHash: true});
-                })  
-            */
             });
             
             $j(window).resize(function() { 
                 $j(".ui-header").width($j(window).width());
                 $j(".ui-footer").width($j(window).width());
-            });
-            
-            $j(document).trigger('salesforceSessionRefresh');
-            $j(document).bind('salesforceSessionRefresh',function(e){
-                //alert('session refreshed');
-                //location.reload();
-            });
- 
+            });            
         </script>
         <apex:insert name="head"/>
     </head> 
@@ -64,11 +44,6 @@
             </apex:insert>
         </div>
         <apex:insert name="additional">
-            <!--
-            <div data-role="page" data-transition="flip" id="offline">
-                <h2>Oops. Looks like you forgot pay your Internet bill. Please restart the application once you're back online.</h2>
-            </div>
-            -->
         </apex:insert>    
     </body>
 </html>
