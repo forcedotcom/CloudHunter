@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>End_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date &amp; Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Points_Possible__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Points Possible</label>
+        <summarizedField>Mission__c.Max_Point_Value__c</summarizedField>
+        <summaryForeignKey>Mission__c.Game__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date_Time__c</fullName>
+        <defaultValue>now() + 7</defaultValue>
+        <externalId>false</externalId>
+        <label>Start Date &amp; Time</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Time_Remaining__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( NOW() &lt; Start_Date_Time__c,&quot;The Game has not started&quot;,
+TEXT(FLOOR(End_Date_Time__c - now())) &amp; &quot; Days: &quot; &amp;
+TEXT(FLOOR(((End_Date_Time__c - now()) - FLOOR(End_Date_Time__c - now())) * 24)) &amp; &quot; Hrs: &quot; &amp;
+IF(
+	FLOOR(End_Date_Time__c - now()) &gt; 0,
+	TEXT(ROUND((((MOD(((End_Date_Time__c - now()) - (FLOOR(End_Date_Time__c - now()))) , (FLOOR(End_Date_Time__c - now()))) * 24) - (FLOOR(((End_Date_Time__c - now()) - (FLOOR(End_Date_Time__c - now()))) * 24))) * 60),0)) &amp; &quot; Mins&quot;,
+	TEXT(ROUND((((MOD(((End_Date_Time__c - now()) - (FLOOR(End_Date_Time__c - now()))) , 1) * 24) - (FLOOR(((End_Date_Time__c - now()) - (FLOOR(End_Date_Time__c - now()))) * 24))) * 60),0)) &amp; &quot; Mins&quot;)
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time Remaining</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Game</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Maximum_Points_Possible__c</columns>
+        <columns>Start_Date_Time__c</columns>
+        <columns>End_Date_Time__c</columns>
+        <columns>Time_Remaining__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Game Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Games</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Maximum_Points_Possible__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Time_Remaining__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

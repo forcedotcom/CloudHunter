@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <customSettingsVisibility>Protected</customSettingsVisibility>
+    <description>General Settings for the Cloud Hunter Application.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Integration_Class_Name__c</fullName>
+        <description>The name of the Apex class that implements the IntegrationIface interface.  This is an abstraction that allows the application to be installed into an org or optionally in a separate org while still supporting chatter and user integration.</description>
+        <externalId>false</externalId>
+        <label>Integration Class Name</label>
+        <length>100</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Cloud Hunter Settings</label>
+</CustomObject>

@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		38164D0215FA76AE004A3B4F /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 38164CFF15FA76AE004A3B4F /* CDVBarcodeScanner.mm */; };
+		38164D0315FA76AE004A3B4F /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38164D0015FA76AE004A3B4F /* zxing-all-in-one.cpp */; };
+		38B2D05615FA69FE00F6C01C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05515FA69FE00F6C01C /* Foundation.framework */; };
+		38B2D05815FA69FE00F6C01C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05715FA69FE00F6C01C /* UIKit.framework */; };
+		38B2D05A15FA69FE00F6C01C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05915FA69FE00F6C01C /* CFNetwork.framework */; };
+		38B2D05C15FA69FE00F6C01C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05B15FA69FE00F6C01C /* CoreGraphics.framework */; };
+		38B2D05E15FA69FE00F6C01C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05D15FA69FE00F6C01C /* CoreLocation.framework */; };
+		38B2D06015FA69FE00F6C01C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D05F15FA69FE00F6C01C /* CoreMedia.framework */; };
+		38B2D06215FA69FE00F6C01C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06115FA69FE00F6C01C /* QuartzCore.framework */; };
+		38B2D06415FA69FE00F6C01C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06315FA69FE00F6C01C /* Security.framework */; };
+		38B2D06615FA69FE00F6C01C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06515FA69FE00F6C01C /* MobileCoreServices.framework */; };
+		38B2D06815FA69FE00F6C01C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06715FA69FE00F6C01C /* AddressBook.framework */; };
+		38B2D06A15FA69FE00F6C01C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06915FA69FE00F6C01C /* AddressBookUI.framework */; };
+		38B2D06C15FA69FE00F6C01C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06B15FA69FE00F6C01C /* AudioToolbox.framework */; };
+		38B2D06E15FA69FE00F6C01C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06D15FA69FE00F6C01C /* AVFoundation.framework */; };
+		38B2D07015FA69FE00F6C01C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D06F15FA69FE00F6C01C /* MediaPlayer.framework */; };
+		38B2D07215FA69FE00F6C01C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D07115FA69FE00F6C01C /* SystemConfiguration.framework */; };
+		38B2D07815FA69FE00F6C01C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D07615FA69FE00F6C01C /* InfoPlist.strings */; };
+		38B2D07A15FA69FE00F6C01C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B2D07915FA69FE00F6C01C /* main.m */; };
+		38B2D07C15FA69FE00F6C01C /* CloudHunter-Prefix.pch in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D07B15FA69FE00F6C01C /* CloudHunter-Prefix.pch */; };
+		38B2D09A15FA69FF00F6C01C /* SalesforceHybridSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D09915FA69FF00F6C01C /* SalesforceHybridSDK.framework */; };
+		38B2D09C15FA69FF00F6C01C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D09B15FA69FF00F6C01C /* libz.dylib */; };
+		38B2D0B115FA69FF00F6C01C /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0B015FA69FF00F6C01C /* readme.md */; };
+		38B2D0B515FA69FF00F6C01C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B2D0B415FA69FF00F6C01C /* AppDelegate.m */; };
+		38B2D0B815FA6A0000F6C01C /* README in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0B715FA6A0000F6C01C /* README */; };
+		38B2D0BA15FA6A0000F6C01C /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0B915FA6A0000F6C01C /* Cordova.plist */; };
+		38B2D0BC15FA6A0000F6C01C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0BB15FA6A0000F6C01C /* Settings.bundle */; };
+		38B2D0BE15FA6A0000F6C01C /* CordovaResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0BD15FA6A0000F6C01C /* CordovaResources.bundle */; };
+		38B2D0C515FA6A4400F6C01C /* cloudHunter-app-icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0C415FA6A4400F6C01C /* cloudHunter-app-icon-114x114.png */; };
+		38B2D0C715FA6A4F00F6C01C /* cloudHunter-app-icon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0C615FA6A4F00F6C01C /* cloudHunter-app-icon-57x57.png */; };
+		38B2D0C915FA6A5700F6C01C /* cloudHunter-app-icon-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0C815FA6A5700F6C01C /* cloudHunter-app-icon-72x72.png */; };
+		38B2D0CB15FA6A5B00F6C01C /* cloudHunter-app-icon-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0CA15FA6A5B00F6C01C /* cloudHunter-app-icon-144x144.png */; };
+		38B2D0CD15FA6A7F00F6C01C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0CC15FA6A7F00F6C01C /* Default.png */; };
+		38B2D0CF15FA6A8300F6C01C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0CE15FA6A8300F6C01C /* Default@2x.png */; };
+		38B2D0D115FA6A9200F6C01C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0D015FA6A9200F6C01C /* Default-Portrait~ipad.png */; };
+		38B2D0D315FA6AB900F6C01C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0D215FA6AB900F6C01C /* Default-Landscape~ipad.png */; };
+		38B2D0DC15FA6DC300F6C01C /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D0D915FA6DC300F6C01C /* AssetsLibrary.framework */; };
+		38B2D0DD15FA6DC300F6C01C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D0DA15FA6DC300F6C01C /* CoreVideo.framework */; };
+		38B2D0DE15FA6DC300F6C01C /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B2D0DB15FA6DC300F6C01C /* libiconv.dylib */; };
+		38B2D0E015FA6EBA00F6C01C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 38B2D0DF15FA6EBA00F6C01C /* www */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		38B2D04F15FA69FE00F6C01C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = www;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		38164CFF15FA76AE004A3B4F /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CDVBarcodeScanner.mm; path = Plugins/CDVBarcodeScanner.mm; sourceTree = "<group>"; };
+		38164D0015FA76AE004A3B4F /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "zxing-all-in-one.cpp"; path = "Plugins/zxing-all-in-one.cpp"; sourceTree = "<group>"; };
+		38164D0115FA76AE004A3B4F /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "zxing-all-in-one.h"; path = "Plugins/zxing-all-in-one.h"; sourceTree = "<group>"; };
+		38B2D05115FA69FE00F6C01C /* CloudHunter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudHunter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38B2D05515FA69FE00F6C01C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		38B2D05715FA69FE00F6C01C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		38B2D05915FA69FE00F6C01C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		38B2D05B15FA69FE00F6C01C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		38B2D05D15FA69FE00F6C01C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		38B2D05F15FA69FE00F6C01C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		38B2D06115FA69FE00F6C01C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		38B2D06315FA69FE00F6C01C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		38B2D06515FA69FE00F6C01C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		38B2D06715FA69FE00F6C01C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		38B2D06915FA69FE00F6C01C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		38B2D06B15FA69FE00F6C01C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		38B2D06D15FA69FE00F6C01C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		38B2D06F15FA69FE00F6C01C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		38B2D07115FA69FE00F6C01C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		38B2D07515FA69FE00F6C01C /* CloudHunter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CloudHunter-Info.plist"; sourceTree = "<group>"; };
+		38B2D07715FA69FE00F6C01C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		38B2D07915FA69FE00F6C01C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		38B2D07B15FA69FE00F6C01C /* CloudHunter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudHunter-Prefix.pch"; sourceTree = "<group>"; };
+		38B2D09915FA69FF00F6C01C /* SalesforceHybridSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SalesforceHybridSDK.framework; sourceTree = "<group>"; };
+		38B2D09B15FA69FF00F6C01C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = /usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		38B2D0B015FA69FF00F6C01C /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme.md; sourceTree = "<group>"; };
+		38B2D0B315FA69FF00F6C01C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		38B2D0B415FA69FF00F6C01C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
+		38B2D0B715FA6A0000F6C01C /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		38B2D0B915FA6A0000F6C01C /* Cordova.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Cordova.plist; sourceTree = "<group>"; };
+		38B2D0BB15FA6A0000F6C01C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		38B2D0BD15FA6A0000F6C01C /* CordovaResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CordovaResources.bundle; sourceTree = "<group>"; };
+		38B2D0C415FA6A4400F6C01C /* cloudHunter-app-icon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloudHunter-app-icon-114x114.png"; path = "../cloudHunter-app-icon-114x114.png"; sourceTree = "<group>"; };
+		38B2D0C615FA6A4F00F6C01C /* cloudHunter-app-icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloudHunter-app-icon-57x57.png"; path = "../cloudHunter-app-icon-57x57.png"; sourceTree = "<group>"; };
+		38B2D0C815FA6A5700F6C01C /* cloudHunter-app-icon-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloudHunter-app-icon-72x72.png"; path = "../cloudHunter-app-icon-72x72.png"; sourceTree = "<group>"; };
+		38B2D0CA15FA6A5B00F6C01C /* cloudHunter-app-icon-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cloudHunter-app-icon-144x144.png"; path = "../cloudHunter-app-icon-144x144.png"; sourceTree = "<group>"; };
+		38B2D0CC15FA6A7F00F6C01C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		38B2D0CE15FA6A8300F6C01C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		38B2D0D015FA6A9200F6C01C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		38B2D0D215FA6AB900F6C01C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		38B2D0D915FA6DC300F6C01C /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		38B2D0DA15FA6DC300F6C01C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		38B2D0DB15FA6DC300F6C01C /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		38B2D0DF15FA6EBA00F6C01C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = CloudHunter/www; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38B2D04C15FA69FE00F6C01C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38B2D0DC15FA6DC300F6C01C /* AssetsLibrary.framework in Frameworks */,
+				38B2D0DD15FA6DC300F6C01C /* CoreVideo.framework in Frameworks */,
+				38B2D0DE15FA6DC300F6C01C /* libiconv.dylib in Frameworks */,
+				38B2D05615FA69FE00F6C01C /* Foundation.framework in Frameworks */,
+				38B2D05815FA69FE00F6C01C /* UIKit.framework in Frameworks */,
+				38B2D05A15FA69FE00F6C01C /* CFNetwork.framework in Frameworks */,
+				38B2D05C15FA69FE00F6C01C /* CoreGraphics.framework in Frameworks */,
+				38B2D05E15FA69FE00F6C01C /* CoreLocation.framework in Frameworks */,
+				38B2D06015FA69FE00F6C01C /* CoreMedia.framework in Frameworks */,
+				38B2D06215FA69FE00F6C01C /* QuartzCore.framework in Frameworks */,
+				38B2D06415FA69FE00F6C01C /* Security.framework in Frameworks */,
+				38B2D06615FA69FE00F6C01C /* MobileCoreServices.framework in Frameworks */,
+				38B2D06815FA69FE00F6C01C /* AddressBook.framework in Frameworks */,
+				38B2D06A15FA69FE00F6C01C /* AddressBookUI.framework in Frameworks */,
+				38B2D06C15FA69FE00F6C01C /* AudioToolbox.framework in Frameworks */,
+				38B2D06E15FA69FE00F6C01C /* AVFoundation.framework in Frameworks */,
+				38B2D07015FA69FE00F6C01C /* MediaPlayer.framework in Frameworks */,
+				38B2D07215FA69FE00F6C01C /* SystemConfiguration.framework in Frameworks */,
+				38B2D09A15FA69FF00F6C01C /* SalesforceHybridSDK.framework in Frameworks */,
+				38B2D09C15FA69FF00F6C01C /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38B2D04415FA69FE00F6C01C = {
+			isa = PBXGroup;
+			children = (
+				38B2D0DF15FA6EBA00F6C01C /* www */,
+				38B2D07315FA69FE00F6C01C /* CloudHunter */,
+				38B2D05415FA69FE00F6C01C /* Frameworks */,
+				38B2D05215FA69FE00F6C01C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		38B2D05215FA69FE00F6C01C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D05115FA69FE00F6C01C /* CloudHunter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		38B2D05415FA69FE00F6C01C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D0D915FA6DC300F6C01C /* AssetsLibrary.framework */,
+				38B2D0DA15FA6DC300F6C01C /* CoreVideo.framework */,
+				38B2D0DB15FA6DC300F6C01C /* libiconv.dylib */,
+				38B2D05515FA69FE00F6C01C /* Foundation.framework */,
+				38B2D05715FA69FE00F6C01C /* UIKit.framework */,
+				38B2D05915FA69FE00F6C01C /* CFNetwork.framework */,
+				38B2D05B15FA69FE00F6C01C /* CoreGraphics.framework */,
+				38B2D05D15FA69FE00F6C01C /* CoreLocation.framework */,
+				38B2D05F15FA69FE00F6C01C /* CoreMedia.framework */,
+				38B2D06115FA69FE00F6C01C /* QuartzCore.framework */,
+				38B2D06315FA69FE00F6C01C /* Security.framework */,
+				38B2D06515FA69FE00F6C01C /* MobileCoreServices.framework */,
+				38B2D06715FA69FE00F6C01C /* AddressBook.framework */,
+				38B2D06915FA69FE00F6C01C /* AddressBookUI.framework */,
+				38B2D06B15FA69FE00F6C01C /* AudioToolbox.framework */,
+				38B2D06D15FA69FE00F6C01C /* AVFoundation.framework */,
+				38B2D06F15FA69FE00F6C01C /* MediaPlayer.framework */,
+				38B2D07115FA69FE00F6C01C /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		38B2D07315FA69FE00F6C01C /* CloudHunter */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D09915FA69FF00F6C01C /* SalesforceHybridSDK.framework */,
+				38B2D09B15FA69FF00F6C01C /* libz.dylib */,
+				38B2D0B015FA69FF00F6C01C /* readme.md */,
+				38B2D0BB15FA6A0000F6C01C /* Settings.bundle */,
+				38B2D0BD15FA6A0000F6C01C /* CordovaResources.bundle */,
+				38B2D09D15FA69FF00F6C01C /* Resources */,
+				38B2D0B215FA69FF00F6C01C /* Classes */,
+				38B2D0B615FA6A0000F6C01C /* Plugins */,
+				38B2D07415FA69FE00F6C01C /* Supporting Files */,
+			);
+			path = CloudHunter;
+			sourceTree = "<group>";
+		};
+		38B2D07415FA69FE00F6C01C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D07515FA69FE00F6C01C /* CloudHunter-Info.plist */,
+				38B2D07615FA69FE00F6C01C /* InfoPlist.strings */,
+				38B2D07915FA69FE00F6C01C /* main.m */,
+				38B2D07B15FA69FE00F6C01C /* CloudHunter-Prefix.pch */,
+				38B2D0B915FA6A0000F6C01C /* Cordova.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38B2D09D15FA69FF00F6C01C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D09E15FA69FF00F6C01C /* icons */,
+				38B2D0A515FA69FF00F6C01C /* splash */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		38B2D09E15FA69FF00F6C01C /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D0CA15FA6A5B00F6C01C /* cloudHunter-app-icon-144x144.png */,
+				38B2D0C815FA6A5700F6C01C /* cloudHunter-app-icon-72x72.png */,
+				38B2D0C615FA6A4F00F6C01C /* cloudHunter-app-icon-57x57.png */,
+				38B2D0C415FA6A4400F6C01C /* cloudHunter-app-icon-114x114.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
+		38B2D0A515FA69FF00F6C01C /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D0D215FA6AB900F6C01C /* Default-Landscape~ipad.png */,
+				38B2D0D015FA6A9200F6C01C /* Default-Portrait~ipad.png */,
+				38B2D0CE15FA6A8300F6C01C /* Default@2x.png */,
+				38B2D0CC15FA6A7F00F6C01C /* Default.png */,
+			);
+			name = splash;
+			sourceTree = "<group>";
+		};
+		38B2D0B215FA69FF00F6C01C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				38B2D0B315FA69FF00F6C01C /* AppDelegate.h */,
+				38B2D0B415FA69FF00F6C01C /* AppDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		38B2D0B615FA6A0000F6C01C /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				38164CFF15FA76AE004A3B4F /* CDVBarcodeScanner.mm */,
+				38164D0015FA76AE004A3B4F /* zxing-all-in-one.cpp */,
+				38164D0115FA76AE004A3B4F /* zxing-all-in-one.h */,
+				38B2D0B715FA6A0000F6C01C /* README */,
+			);
+			name = Plugins;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		38B2D05015FA69FE00F6C01C /* CloudHunter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38B2D0C115FA6A0000F6C01C /* Build configuration list for PBXNativeTarget "CloudHunter" */;
+			buildPhases = (
+				38B2D04B15FA69FE00F6C01C /* Sources */,
+				38B2D04C15FA69FE00F6C01C /* Frameworks */,
+				38B2D04D15FA69FE00F6C01C /* Resources */,
+				38B2D04E15FA69FE00F6C01C /* Sources */,
+				38B2D04F15FA69FE00F6C01C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CloudHunter;
+			productName = CloudHunter;
+			productReference = 38B2D05115FA69FE00F6C01C /* CloudHunter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		38B2D04615FA69FE00F6C01C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Marcus Torres";
+			};
+			buildConfigurationList = 38B2D04915FA69FE00F6C01C /* Build configuration list for PBXProject "CloudHunter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 38B2D04415FA69FE00F6C01C;
+			productRefGroup = 38B2D05215FA69FE00F6C01C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				38B2D05015FA69FE00F6C01C /* CloudHunter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		38B2D04D15FA69FE00F6C01C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38B2D07815FA69FE00F6C01C /* InfoPlist.strings in Resources */,
+				38B2D07C15FA69FE00F6C01C /* CloudHunter-Prefix.pch in Resources */,
+				38B2D0B115FA69FF00F6C01C /* readme.md in Resources */,
+				38B2D0B815FA6A0000F6C01C /* README in Resources */,
+				38B2D0BA15FA6A0000F6C01C /* Cordova.plist in Resources */,
+				38B2D0BC15FA6A0000F6C01C /* Settings.bundle in Resources */,
+				38B2D0BE15FA6A0000F6C01C /* CordovaResources.bundle in Resources */,
+				38B2D0C515FA6A4400F6C01C /* cloudHunter-app-icon-114x114.png in Resources */,
+				38B2D0C715FA6A4F00F6C01C /* cloudHunter-app-icon-57x57.png in Resources */,
+				38B2D0C915FA6A5700F6C01C /* cloudHunter-app-icon-72x72.png in Resources */,
+				38B2D0CB15FA6A5B00F6C01C /* cloudHunter-app-icon-144x144.png in Resources */,
+				38B2D0CD15FA6A7F00F6C01C /* Default.png in Resources */,
+				38B2D0CF15FA6A8300F6C01C /* Default@2x.png in Resources */,
+				38B2D0D115FA6A9200F6C01C /* Default-Portrait~ipad.png in Resources */,
+				38B2D0D315FA6AB900F6C01C /* Default-Landscape~ipad.png in Resources */,
+				38B2D0E015FA6EBA00F6C01C /* www in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		38B2D04B15FA69FE00F6C01C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38B2D07A15FA69FE00F6C01C /* main.m in Sources */,
+				38B2D0B515FA69FF00F6C01C /* AppDelegate.m in Sources */,
+				38164D0215FA76AE004A3B4F /* CDVBarcodeScanner.mm in Sources */,
+				38164D0315FA76AE004A3B4F /* zxing-all-in-one.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38B2D04E15FA69FE00F6C01C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		38B2D07615FA69FE00F6C01C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38B2D07715FA69FE00F6C01C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		38B2D0BF15FA6A0000F6C01C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		38B2D0C015FA6A0000F6C01C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		38B2D0C215FA6A0000F6C01C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CloudHunter\"/**",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudHunter/CloudHunter-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CORDOVA_FRAMEWORK=1",
+					"DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = "";
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
+				INFOPLIST_FILE = "CloudHunter/CloudHunter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		38B2D0C315FA6A0000F6C01C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/CloudHunter\"/**",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CloudHunter/CloudHunter-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "CORDOVA_FRAMEWORK=1";
+				HEADER_SEARCH_PATHS = "";
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
+				INFOPLIST_FILE = "CloudHunter/CloudHunter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38B2D04915FA69FE00F6C01C /* Build configuration list for PBXProject "CloudHunter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B2D0BF15FA6A0000F6C01C /* Debug */,
+				38B2D0C015FA6A0000F6C01C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		38B2D0C115FA6A0000F6C01C /* Build configuration list for PBXNativeTarget "CloudHunter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38B2D0C215FA6A0000F6C01C /* Debug */,
+				38B2D0C315FA6A0000F6C01C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 38B2D04615FA69FE00F6C01C /* Project object */;
+}

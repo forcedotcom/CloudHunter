@@ -1,0 +1,60 @@
+<apex:page standardController="Player__c" extensions="PlayerControllerExtension" docType="html-5.0" showHeader="false" standardStylesheets="false">
+    <apex:composition template="Template">
+        <apex:define name="title">Player Profile</apex:define>
+        <apex:define name="header">Player Profile</apex:define>
+        <apex:define name="head">
+        <!--style type="text/css" media="screen">
+            /*
+            @media all and (max-width: 3000px) and (min-width: 768px) {
+              #cloud {
+                width: 512px;
+                height: 490px;
+                margin-left: -50px;
+                background: url(../images/email.png) left center no-repeat;
+              }
+            }
+
+            @media all and (max-width: 767px) and (min-width: 200px) {
+              #cloud {
+                width: 256px;
+                height: 245px;
+                margin-left: -25px;
+                background: url(../images/email.png) left center no-repeat;
+              }
+            }
+            */
+            </style-->
+        </apex:define>
+        <apex:define name="content">
+            <div data-role="content" role="main" class="ui-content" style="background-color: #e2f5fc">
+                <div style="text-align: center; position: absolute; left: 0px; width: 100%; margin-top: 10px; background-color: #e2f5fc">
+                    <!--img id="cloud" width="256" style="margin-left: -25px" height="245" src="{!URLFOR($Resource.CloudHunterImages, 'images/cloud.png')}" /-->
+                    <img id="cloud" src="{!URLFOR($Resource.CloudHunterImages, 'images/cloud3.png')}" style="margin-left: -160px; margin-top:20px; width: 343px; z-index:100" />
+                    <img id="cloud" src="{!URLFOR($Resource.CloudHunterImages, 'images/cloud-50opac.png')}" style="position: absolute; margin-left: -95px; margin-top:20px; width: 171px" />
+                    <img id="cloud" src="{!URLFOR($Resource.CloudHunterImages, 'images/cloud-50opac.png')}" style="position: absolute; margin-left: -80px; margin-top:0px; width: 43px" />
+                    <img src="{!Player__c.User__r.FullPhotoUrl}" style="width: 105px; height: 105px; position: absolute; background-color: #FFFFFF; padding: 5px; margin-top: 12px; margin-left: -230px;" />
+                    <!--h5 style="position: absolute;left: 50%; width: 80px; color: white; background: #AD030F; padding: 0px 2px 2px 2px; margin-left: -143px; margin-top: -183px; text-shadow: 0 -1px #AD030F, 0 1px #AD030F;-moz-box-shadow: 2px 2px 0 rgba(0,0,0,0.1); left: 50%">{!rankNumber}{!placeSuffix} Place</h5-->
+                    <h4 style="position: absolute;left: 50%; margin-top: -152px; margin-left:-138px">{!Player__c.User__r.Name}</h4>
+                    <h6 style="position: absolute;left: 50%; margin-top: -127px; margin-left:-138px;">{!Player__c.User__r.CompanyName}</h6>
+                    <img src="{!URLFOR($Resource.CloudHunterImages, 'images/coins.png')}" style="position: absolute;left: 50%;margin-left: -138px;margin-top: 205px; width: 24px;"/>
+                    <span style="text-align: left; left: 50%; position: absolute; margin-left: -105px; margin-top: 175px; font-size: 44pt">{!ROUND(Player__c.Total_Points_Awarded__c,0)}<span style="margin-left: 10px; font-size: 12pt">points</span></span>
+                    <div style="text-align: center; margin-top: -35px; padding-bottom: 550px">
+                        <h5 style="color: red">{!IF(Player__c.Game__r.End_Date_Time__c > NOW(), 'Time Remaining: ' + Player__c.Game__r.Time_Remaining__c,'GAME HAS ENDED. THANK YOU FOR PLAYING.')}</h5>
+                    </div>
+                </div>
+            </div>
+            <apex:outputPanel rendered="false">{!Player__c.Game__c}</apex:outputPanel>
+            <script>
+                /*
+                $j(document).bind("orientationchange", function(e){
+                    $j(window).trigger("throttledresize")
+                });
+                
+                if( (screen.width > 320) && (screen.height > 480) ){
+                        
+                }
+                */
+            </script>
+        </apex:define>
+    </apex:composition>
+</apex:page>

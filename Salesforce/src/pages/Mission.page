@@ -1,0 +1,248 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showHeader="false" standardController="Mission__c"
+           title="Missions" cache="false" extensions="MissionControllerExtension">
+<apex:composition template="Template">
+<apex:define name="title">Mission Detail</apex:define>
+<apex:define name="head">
+    <!-- 
+    Include the appropriate JS libraries for PhoneGap and the Bar Code Scanner plugin
+    The JS libraries have to be included based on the target OS - iOS vs Android
+    -->
+    <apex:dynamicComponent componentValue="{!PhoneGapJS}"/>
+    <apex:dynamicComponent componentValue="{!BarCodeScannerJS}"/>
+    
+    <!--JQuery plugin library for capturing signature.-->
+    <apex:includeScript value="{!URLFOR($Resource.jSignature)}"/> 
+    <script type="text/javascript">
+        var missionRecs = {};
+        $j.ajaxSetup({
+          timeout: '120000'
+        });    
+        
+        $j('#currentPage').live('pageinit',function(event){
+        
+        	//Initialize the jSignature JQuery plugin
+            $j("#signature").jSignature({color:"#f00", height:150, width:300, bgcolor:"#f5fb92"});
+
+        	//Display the appropriate text for the action button, based on the Mission Type
+            var missionType = '{!Mission__c.Mission_Type__c}';
+            if ( missionType == 'Camera'){
+                btnText = 'Take Photo';
+            }else if (missionType == 'Scanner'){
+                btnText = 'Scan';
+            }else if (missionType == 'Check-in'){
+                btnText = 'Check me in!';
+            }else if (missionType == 'Signature'){
+                btnText = 'Sign';
+                $j('#signature').css({'display' : 'block', 'background-color' : '#f5fb92'});
+            } else {
+                btnText = 'Done';
+            }
+            $j('#actionBtn').html(btnText);
+        });
+                
+        function completeMission(){
+        	//Invoke the appropriate function based on the Mission Type
+            var missionType = '{!Mission__c.Mission_Type__c}';
+            if ( missionType == 'Camera'){
+                cameraMissionAction();
+            }else if (missionType == 'Scanner'){
+                scannerMissionAction();
+            }else if (missionType == 'Check-in'){
+                checkInMissionAction();
+            }else if (missionType == 'Signature'){
+                signatureMissionAction();
+            }
+        }
+
+        function cameraMissionAction(){
+        	//Invoke the PhoneGap Camera function
+            navigator.camera.getPicture(onPicSuccess, 
+                                        onPicFail, 
+                                        { quality: 25, destinationType: 0, sourceType: 1}); 
+        }
+                    
+        function onPicSuccess(imageData) {
+            var missionId =  '{!Mission__c.id}';
+            $j.mobile.showPageLoadingMsg("a", "Working....", false);
+
+        	//Invoke the JS Remoting function to complete the Picture mission
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.MissionControllerExtension.completeCameraMissionType}',
+                imageData, 
+                missionId, 
+                '{!gameId}', 
+                function(res,event){
+                    $j.mobile.hidePageLoadingMsg();
+                    var redirectUrl = "{!URLFOR($Page.Mission)}?id=" + missionId + "&P={!playerId}&G={!gameId}";
+                    if (event){
+                        if (res) {
+                            if (res != -1) {
+                                redirectUrl= "{!URLFOR($Page.MissionList)}?P={!playerId}&G={!gameId}";
+                                window.location = redirectUrl;
+                            } else {
+                                showPopupMessage('Issue reading your photo');
+                            }
+                        } else {
+                            showPopupMessage('Error loading picture. Please try again.',redirectUrl);
+                        }
+                    } else {
+                        showPopupMessage('Error loading picture. Please try again.',redirectUrl);
+                    }
+                });
+        }
+
+        function onPicFail(message) {
+            showPopupMessage('Error accessing your camera');
+        }
+    
+        function scannerMissionAction() {
+        	//Invoke the PhoneGap Bar Code Scanning plugin.
+            window.plugins.barcodeScanner.scan( onBarcodeScanSuccess,  
+                                                onBarcodeScanFailure);
+        }
+
+        function onBarcodeScanSuccess(result) {
+                var missionId =  '{!Mission__c.id}';
+                $j.mobile.showPageLoadingMsg("a", "Working....", true);
+        		
+        		//Invoke the JS Remoting function to complete the Bar Code scanning mission
+                Visualforce.remoting.Manager.invokeAction(
+                      '{!$RemoteAction.MissionControllerExtension.completeScanMissionType}',
+                      result.text, 
+                      missionId, 
+                      '{!gameId}',
+                      function(res,event){
+                            var redirectUrl = "{!URLFOR($Page.Mission)}?id=" + missionId + "&P={!playerId}&G={!gameId}";
+                            $j.mobile.hidePageLoadingMsg();
+                            if (event){
+                                if (res) {
+                                    if (res != -1) {
+                                        redirectUrl= "{!URLFOR($Page.MissionList)}?P={!playerId}&G={!gameId}";
+                                        window.location = redirectUrl;
+                                    } else {
+                                        showPopupMessage('Your scan does not match');
+                                    }
+                                } else {
+                                    showPopupMessage('Error reading the code. Please try again.',redirectUrl);
+                                }    
+                            } else {
+                                showPopupMessage('Error reading the code. Please try again.',redirectUrl);
+                            }
+                      });
+        }
+                
+        function onBarcodeScanFailure(error) {            
+            showPopupMessage('Error accessing your camera');
+        }
+        
+        function checkInMissionAction(){
+            $j.mobile.showPageLoadingMsg("a", "Working....", false);
+        	//Invoke the PhoneGap geolocatoion API
+            navigator.geolocation.getCurrentPosition(onCheckInSuccess, 
+                                                     onCheckInFailure, 
+                                                     { enableHighAccuracy: true });
+        }
+
+        function onCheckInSuccess(position) {
+            var missionId =  '{!Mission__c.id}';  
+        	//Invoke the JS Remoting function to complete the check-in. 
+            Visualforce.remoting.Manager.invokeAction(
+                     '{!$RemoteAction.MissionControllerExtension.completeCheckInMissionType}',
+                     position.coords.latitude, 
+                     position.coords.longitude, 
+                     missionId, 
+                     '{!gameId}',
+                     function(res,event) {
+                        $j.mobile.hidePageLoadingMsg();
+                        if (event) {
+                            var redirectUrl = "{!URLFOR($Page.Mission)}?id=" + missionId + "&P={!playerId}&G={!gameId}";
+                            if (res) {
+                                if (res != -1) {
+                                    redirectUrl= "{!URLFOR($Page.MissionList)}?P={!playerId}&G={!gameId}";
+                                    window.location = redirectUrl;
+                                } else {
+                                    showPopupMessage('Sorry. You are not close enough to the designated check-in point!');
+                                }
+                            } else {
+                                showPopupMessage('Sorry, we could not get your current location! Please try again',redirectUrl);
+                            }
+                        } else {
+                            showPopupMessage('Sorry, we could not get your current location! Please try again',redirectUrl);
+                        }
+                     });
+        }
+
+        function onCheckInFailure(error) {
+            $j.mobile.hidePageLoadingMsg();
+            showPopupMessage('Sorry, we could not get your current location! Please try again');
+        }
+
+        function signatureMissionAction(){
+        	//Get the signature from the Canvas element as a Base64 encoded SVG image.
+        	//This is how the JSignature JQuery Plugin works. There is no need for a
+        	//PhoneGap/Hybrid call since touch gestures can be captured with HTML5
+            var datapair = $j("#signature").jSignature("getData", "svgbase64");
+            var missionId =  '{!Mission__c.id}';
+            $j.mobile.showPageLoadingMsg("a", "Working....", false);
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.MissionControllerExtension.completeSignatureMissionType}',
+                datapair[1], 
+                missionId, 
+                '{!gameId}', 
+                function(res,event){
+                  $j.mobile.hidePageLoadingMsg();
+                  if (event){
+                        var redirectUrl = "{!URLFOR($Page.Mission)}?id=" + missionId + "&P={!playerId}&G={!gameId}";
+                        if(res) {
+                            if(res != -1) {
+                                clearSignature();
+                                redirectUrl= "{!URLFOR($Page.MissionList)}?P={!playerId}&G={!gameId}";
+                                window.location = redirectUrl;
+                            } else {
+                                showPopupMessage('Wrong Signature. Please try again.');
+                            }
+                        } else {
+                            showPopupMessage('Error reading signature! Please try again.', redirectUrl);
+                        }
+                  }else{
+                     showPopupMessage('Error reading signature! Please try again.', redirectUrl);
+                  }
+                });            
+        }
+
+        function showPopupMessage(msg, url){
+            $j('#msg').html(msg);
+            if(url){
+                $j('#msgUrl').attr("href",url);
+            }
+            $j.mobile.changePage('#infoMsg', 'pop', true, true);  
+        }
+
+        function clearSignature(){
+            $j('#signature').jSignature('clear');
+            $j('#signature').css('display','none');
+        }
+        
+    </script>    
+</apex:define>
+<apex:define name="header">Mission Detail</apex:define>
+<apex:define name="content">
+    <div data-role="content" id="missionDtl"> 
+        <c:MissionDetail mission="{!Mission__c}"/>
+        <div id="signature" style="text-align:center; display:none"></div>
+        <a data-theme="b" data-role="button" href="#" onclick="completeMission();" >
+            <span id="actionBtn"></span>
+        </a>
+        <a data-theme="b" data-role="button" href="{!URLFOR($Page.MissionList)}?P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" data-ajax="false" onclick="showLoadingModal()">Cancel</a>
+    </div>
+</apex:define>
+<apex:define name="additional">
+    <div data-role="dialog" data-transition="flip" id="infoMsg">
+        <div data-role="content">
+            <h2 id="msg" style="text-align:center"></h2>
+            <a id="msgUrl" data-role="button" href="{!URLFOR($Page.MissionList)}?P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" data-ajax="false">OK</a>
+        </div>
+    </div>
+</apex:define>
+</apex:composition>
+</apex:page>

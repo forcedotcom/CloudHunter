@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Image_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Image ID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Image__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( Image_ID__c != null , 
+    IMAGE( &apos;/servlet/servlet.FileDownload?file=&apos; &amp; Image_ID__c, &apos;&apos;) , 
+    IMAGE(&apos;&apos; , &apos;&apos; , 0 , 0))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Image</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Junction_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>The unique identifier that is used to prevent more than one occurrence of an Achievement per player and mission pair. This field is set by the system and should never be shown to end users.</description>
+        <externalId>true</externalId>
+        <label>Junction Id</label>
+        <length>37</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Mission__c</fullName>
+        <externalId>false</externalId>
+        <label>Mission</label>
+        <referenceTo>Mission__c</referenceTo>
+        <relationshipLabel>Achievements</relationshipLabel>
+        <relationshipName>Achievements</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Player__c</fullName>
+        <externalId>false</externalId>
+        <label>Player</label>
+        <referenceTo>Player__c</referenceTo>
+        <relationshipLabel>Achievements</relationshipLabel>
+        <relationshipName>Achievements</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Points_Awarded__c</fullName>
+        <externalId>false</externalId>
+        <label>Points Awarded</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Mission_Completed__c</fullName>
+        <defaultValue>now()</defaultValue>
+        <externalId>false</externalId>
+        <label>Time Mission Completed</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <label>Achievement</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Mission__c</columns>
+        <columns>Player__c</columns>
+        <columns>Points_Awarded__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>ACHIEVEMENT{0000000}</displayFormat>
+        <label>Achievement Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Achievements</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Mission__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Player__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Points_Awarded__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>ExpiredGame</fullName>
+        <active>true</active>
+        <description>Enforces that achievements can not be changed after a game has expired.</description>
+        <errorConditionFormula>Mission__r.Game__r.End_Date_Time__c &lt;  NOW()</errorConditionFormula>
+        <errorMessage>Achievements can not be created or modified on expired games.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ExpiredMission</fullName>
+        <active>true</active>
+        <description>Achievements should not be completed after the mission has ended.</description>
+        <errorConditionFormula>Mission__r.Mission_End_Time__c &lt; NOW()</errorConditionFormula>
+        <errorMessage>This mission is completed and no longer available.</errorMessage>
+    </validationRules>
+</CustomObject>

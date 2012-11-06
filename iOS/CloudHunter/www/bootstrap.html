@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CloudHunter</title>
+        
+        <script src="cordova-1.8.1.js"></script>
+        <script src="SFHybridApp.js"></script>
+        <script src="SalesforceOAuthPlugin.js"></script>
+        <script src="bootconfig.js"></script>
+        
+        <!-- log window styling -->
+        <style>
+          .logWindow {display:none; width:700px;}
+          .logWindow > p {padding:0px; margin:0px; word-wrap:break-word;}
+        
+            html, body {height:100%; width:100% margin:0; padding:0; background-color: #f3f5f6}
+            //#page-background {position:relative; width:100%; height:100%; margin: 0 auto; text-align: center; }
+            #page-background {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 0px;
+                width: 100%;
+                display: block
+            }
+            
+            #img-centered {
+                margin-left: -160px;
+                position: absolute;
+                top: -80px;
+                left: 50%;
+                width: 320px;
+                height: 150px;
+            }
+            
+        </style>
+
+        <script>
+        document.addEventListener("deviceready", cordova.require("salesforce/util/bootstrap").onDeviceReady);
+        </script>
+    </head>
+
+    <body>
+        <div id="page-background"><img id="img-centered" src="background-image.png" /></div>
+        <!--div id="main">
+            <h1>Loading...</h1>
+            <fieldset id="errors" class="logWindow">
+                <legend>Errors</legend>
+            </fieldset>
+            <fieldset id="console" class="logWindow">
+                <legend>Debug Console</legend>
+            </fieldset>
+        </div-->
+    </body>
+</html>

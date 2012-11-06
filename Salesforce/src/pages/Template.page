@@ -1,0 +1,75 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" standardStylesheets="false">
+<html>
+    <head>
+        <title><apex:insert name="title">Default Title</apex:insert></title>
+        <apex:styleSheet value="{!URLFOR($Resource.jQuery, 'jquery/jquery.mobile-1.1.1.min.css')}" />
+        <!--style>
+        // div.ui-loader.ui-overlay-shadow { display: none !important; }
+        </style-->
+        <apex:includeScript value="{!URLFOR($Resource.jQuery, 'jquery/jquery-1.6.2.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jQuery, 'jquery/jquery.mobile-1.1.1.min.js')}"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+        <script type="text/javascript">
+            var $j = jQuery.noConflict();
+
+            function showLoadingModal() {
+                $j.mobile.loadingMessageTextVisible = true;
+                $j.mobile.showPageLoadingMsg("a", "Loading....", false);
+            }
+            
+            $j(window).ready(function() {
+                $j.mobile.hidePageLoadingMsg();
+            /*    
+                if (!navigator.onLine) {
+                     $j.mobile.changePage('#offline', {changeHash: true});
+                     return;
+                }        
+            
+                $j(window).bind('offline',function(e){
+                    $j.mobile.changePage('#offline', {changeHash: true});
+                })  
+            */
+            });
+            
+            $j(window).resize(function() { 
+                $j(".ui-header").width($j(window).width());
+                $j(".ui-footer").width($j(window).width());
+            });
+            
+            $j(document).trigger('salesforceSessionRefresh');
+            $j(document).bind('salesforceSessionRefresh',function(e){
+                //alert('session refreshed');
+                //location.reload();
+            });
+ 
+        </script>
+        <apex:insert name="head"/>
+    </head> 
+    <body class="ui-mobile-viewport ui-overlay-c"> 
+        <div data-role="page" class="ui-page ui-body-c ui-page-active" id="currentPage">
+            <div data-role="header" data-id="myHeader" data-position="fixed" data-theme="b">
+                <h1><apex:insert name="header">Header</apex:insert></h1>
+            </div>
+            <apex:insert name="content">Main page content</apex:insert>
+            <apex:insert name="footer">
+                <div data-role="footer" data-id="myFooter" data-position="fixed">
+                    <div data-role="navbar">
+                      <ul>
+                        <li><a href="{!URLFOR($Page.Player)}?id={!$CurrentPage.parameters.P}&P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" data-ajax="false" onclick="showLoadingModal()"><img src="{!URLFOR($Resource.CloudHunterImages, 'images/profile-on.png')}" width="50" height="50" /></a></li>
+                        <li><a href="{!URLFOR($Page.Standings)}?P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" data-ajax="false" onclick="showLoadingModal()"><img src="{!URLFOR($Resource.CloudHunterImages, 'images/list-on.png')}" width="50" height="50"/></a></li>
+                        <li><a href="{!URLFOR($Page.MissionList)}?P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" data-ajax="false" onclick="showLoadingModal()"><img src="{!URLFOR($Resource.CloudHunterImages, 'images/mission-on-cloud.png')}" width="50" height="50"/></a></li>              
+                      </ul>
+                    </div>
+                </div>
+            </apex:insert>
+        </div>
+        <apex:insert name="additional">
+            <!--
+            <div data-role="page" data-transition="flip" id="offline">
+                <h2>Oops. Looks like you forgot pay your Internet bill. Please restart the application once you're back online.</h2>
+            </div>
+            -->
+        </apex:insert>    
+    </body>
+</html>
+</apex:page>

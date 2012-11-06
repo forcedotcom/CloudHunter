@@ -1,0 +1,33 @@
+<apex:page controller="GameListController" action="{!redirectForSingleGame}" docType="html-5.0" showHeader="false" standardStylesheets="false">
+    <apex:composition template="Template">
+        <apex:define name="title">Active Games</apex:define>
+        <apex:define name="head">
+            <apex:stylesheet value="{!URLFOR($Resource.gameListCSS)}"/>
+            <script type="text/javascript">
+                
+                function selectGame(gameId){
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAction.GameListController.checkPlayerRecord}',
+                        gameId, 
+                        function(playerId, e) {
+                            $j.mobile.changePage("{!URLFOR($Page.Player)}?id="+playerId+"&P="+playerId+"&G="+gameId, {changeHash: true});
+                        },
+                        {escape: true}
+                    );
+                }
+            </script>
+        </apex:define>
+        <apex:define name="header">Active Games</apex:define>
+        <apex:define name="content"> 
+            <div data-role="content" class="ui-content" role="main">
+                <div class="center-wrapper">
+                    <apex:repeat value="{!gameList}" var="game">
+                        <a href="#" onclick="selectGame('{!game.id}');" data-role="button" data-theme="e">{!game.name}</a>
+                    </apex:repeat>
+                    <apex:outputText rendered="{! NOT(activeGames)}" escape="false" value="<p>There are currently no active CloudHunter games.<br/><br/>Please try again later.</p>" />
+                </div>
+            </div>
+        </apex:define>
+        <apex:define name="footer"/>
+    </apex:composition>
+</apex:page>

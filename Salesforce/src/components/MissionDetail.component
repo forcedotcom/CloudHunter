@@ -1,0 +1,17 @@
+<apex:component selfClosing="true" layout="none">
+    <apex:attribute name="Mission" type="Mission__c" description="The Mission SObject containing the data to be presented."/>
+    <h3 id="title" style="text-align:center; margin-left: 0px; margin-right: 10px">{!Mission.name}</h3>
+    <apex:repeat value="{!$ObjectType.Mission__c.FieldSets.Mobile_Detail}" var="f">
+        <div>
+	        <h4 style="display: inline;">{!f.label}:</h4>
+        	<p style="display: inline; margin-left: 20px">
+                <apex:outputField value="{!mission[f]}" rendered="{!NOT(f.type = 'double')}"/>
+                <apex:outputText value="{!ROUND(Mission.Current_Point_Value__c,0)}" rendered="{!f.type = 'double'}"/>
+            </p>
+        </div>    
+    </apex:repeat>
+    <div style="padding-bottom: 50px;"/>
+    <apex:outputPanel layout="block" style="text-align: left; left: 0; margin-top: 10px; padding-bottom: 10px;" rendered="{!NOT(ISNULL(Mission.Mission_End_Time__c))}">
+        <h5 style="color: red">Time Remaining {!Mission.Time_Remaining__c}</h5>
+    </apex:outputPanel>
+</apex:component>

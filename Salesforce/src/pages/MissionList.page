@@ -1,0 +1,109 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showHeader="false" 
+           controller="MissionListController" title="Missions" cache="false">
+<apex:composition template="Template">
+<apex:define name="title">Mission List</apex:define>
+<apex:define name="head">
+    <script type="text/javascript">
+        var missionRecs = {};
+        $j.ajaxSetup({
+          timeout: '120000'
+        });    
+        
+        $j('#currentPage').live('pageinit',function(event){
+            if(!{!gameOver}){
+                getMissionItems();
+            } else {
+                showNoList();
+            }
+        });
+            
+        function getMissionItems(callback) {
+            //Invoke JS Remoting function to retrieve Mission Items
+            //MissionController.getMissionList(
+            $j.mobile.loadingMessageTextVisible = true;
+            $j.mobile.showPageLoadingMsg("a", "Loading....", false);
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.MissionListController.getMissionList}',
+                '{!gameId}', 
+                function(records, e) { 
+                    missionRecs = {};                                                                    
+                    //Iterate through Mission Item records and add each rec. to the page DOM
+                    for(var i = 0; i < records.length; i++) { 
+                        missionRecs[records[i].mission.Id] = records[i];
+                    }
+                    showMissionList(missionRecs, callback) 
+                }, 
+                {escape:false}
+            ); 
+        }       
+
+        function showNoList() {
+            $j('#content').empty();
+            var newContent = $j('<div></div>');
+            newContent.attr('data-theme', 'c');
+            newContent.append($j('<h2>The game is over. Thanks for playing!</h2>'));
+            newContent.appendTo('#content');
+        }
+        
+        function showMissionList(records, callback) {
+            $j('#missionList').empty();
+            var x = 0;
+            $j.each(records,
+              function() {
+                var newLi = $j('<li></li>');
+                var mType = this.mission.Mission_Type__c;
+
+                if(this.completed){
+                    newLi.attr('data-theme', 'a');
+                    newLi.append(getMissionIcon(mType));
+                    newLi.append($j('<h2>'+this.mission.Name+'</h2>').attr('style','text-decoration: line-through;'));
+                    newLi.append($j('<h5 style="color: #4b7eb0">'+Math.round(this.pointsAwarded)+' points won</h5>'));
+                }
+                else{
+                    newLi.attr('data-theme', 'c');
+                    var child = $j('<a id="' +this.mission.Id+ '" href="{!URLFOR($Page.Mission)}?id=' + this.mission.Id + '&P={!$CurrentPage.parameters.P}&G={!$CurrentPage.parameters.G}" rel="external" onclick="showLoadingModal()"></a>');
+                    child.append(getMissionIcon(mType));
+                    child.append($j('<h2>'+this.mission.Name+'</h2>'));
+                    child.append($j('<h5 style="color: #4b7eb0">'+
+                                    Math.round(this.mission.Current_Point_Value__c)+' points available</h5>'));
+                    newLi.append(child);
+                }
+                           
+                newLi.appendTo('#missionList');
+                x++;
+             });
+            
+            $j('#missionList').listview('refresh');
+            $j.mobile.hidePageLoadingMsg();
+            if(callback != null) { callback(); }
+        }   
+        
+        function getMissionIcon(missionType){
+            if (missionType == 'Camera'){
+                return $j('<img src="{!URLFOR($Resource.MissionIcons, 
+                          'camera-icon-80x80.png')}"/>');
+            }else if (missionType == 'Scanner'){
+                return $j('<img src="{!URLFOR($Resource.MissionIcons, 
+                          'scanner-icon-80x80.png')}"/>');
+            }else if (missionType == 'Check-in'){
+                return $j('<img src="{!URLFOR($Resource.MissionIcons, 
+                          'checkin-icon-80x80.png')}"/>');
+            }else if (missionType == 'Signature'){
+                return $j('<img src="{!URLFOR($Resource.MissionIcons, 
+                          'sign-icon-80x80.png')}"/>');
+            }else{
+                return $j('');
+            }
+        }
+    </script>    
+</apex:define>
+<apex:define name="header">Your Missions</apex:define>
+<apex:define name="content">
+    <div id="content" data-role="content">   
+        <ul id="missionList" data-filter="false" data-inset="true" data-role="listview" 
+                data-theme="c" data-dividertheme="b">
+        </ul>
+    </div>
+</apex:define>
+</apex:composition>
+</apex:page>

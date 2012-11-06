@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>PostMessage_Camera</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Camera</shortDescription>
+        <value>I completed the &quot;{0}&quot; Mission and earned {1} points #CloudHunter .</value>
+    </labels>
+    <labels>
+        <fullName>PostMessage_Camera_User</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Camera User</shortDescription>
+        <value>&quot;{0}&quot; Mission Completed. {1} points earned for your photo with {2} #CloudHunter .</value>
+    </labels>
+    <labels>
+        <fullName>PostMessage_Check_in</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Check-in</shortDescription>
+        <value>I completed the &quot;{0}&quot; Mission and earned {1} points #CloudHunter .</value>
+    </labels>
+    <labels>
+        <fullName>PostMessage_Scan</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Scan</shortDescription>
+        <value>&quot;{0}&quot; Mission completed. {1} points earned #CloudHunter .</value>
+    </labels>
+    <labels>
+        <fullName>PostMessage_Scan_User</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Scan User</shortDescription>
+        <value>&quot;{0}&quot; Mission completed. {1} points earned #CloudHunter .</value>
+    </labels>
+    <labels>
+        <fullName>PostMessage_Signature_User</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PostMessage Signature User</shortDescription>
+        <value>&quot;{0}&quot; Mission completed. {1} points earned #CloudHunter .</value>
+    </labels>
+</CustomLabels>
