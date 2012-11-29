@@ -5,7 +5,7 @@ Cloud Hunter is a scavenger hunt mobile application built on the [Salesforce Tou
 
 Application screenshots
 ===========
-![Player Profile page](/images/1.png "Player Profile page")
-![Player Standings page](/images/2.png "Player Standings page")
-![Missions List page](/images/3.png "Missions List page")
-![Mission Detail page](/images/4.png "Mission Detail page")
+![Player Profile page](https://raw.github.com/forcedotcom/CloudHunter/master/images/1.png "Player Profile page")
+![Player Standings page](https://raw.github.com/forcedotcom/CloudHunter/master/images/2.png "Player Standings page")
+![Missions List page](https://raw.github.com/forcedotcom/CloudHunter/master/images/3.png "Missions List page")
+![Mission Detail page](https://raw.github.com/forcedotcom/CloudHunter/master/images/4.png "Mission Detail page")
